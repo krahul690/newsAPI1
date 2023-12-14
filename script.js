@@ -61,10 +61,39 @@ function onNavItemClick(id) {
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
 
-searchButton.addEventListener('click',()=> {
+searchButton.addEventListener('click', () => {
   const query = searchText.value;
   if (!query) return;
   fetchNews(query);
   curSelectedNav?.classList.remove('article');
   curSelectedNav = null;
-})
+});
+
+// Pagination
+// Add these variables at the top of your script
+const pageSize = 12; // Number of articles per page
+let currentPage = 1; // Current page, initialized to 1
+
+// Modify the fetchNews function to include pagination
+async function fetchNews(query, page = 1) {
+  const res = await fetch(`${url}${query}&apiKey=${API_KEY}&page=${page}&pageSize=${pageSize}`);
+  const data = await res.json();
+  console.log(data);
+  bindData(data.articles);
+}
+
+// Add these functions for pagination
+function nextPage() {
+  currentPage++;
+  fetchNews(curSelectedNav.id, currentPage);
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    fetchNews(curSelectedNav.id, currentPage);
+  }
+}
+
+
+
