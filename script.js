@@ -1,4 +1,4 @@
- /** @format */
+/** @format */
 
 const API_KEY = "568bee3a37f0400aa040d0b91d3f2371";
 const url = "https://newsapi.org/v2/everything?q=";
@@ -15,15 +15,14 @@ async function fetchNews(query) {
 function bindData(articles) {
   const cardContainer = document.getElementById("card-container");
   const newsCardTemplate = document.getElementById("templatenews"); // Fixed the variable name
-  cardContainer.innerHTML = '';
-  articles.forEach(article => {
+  cardContainer.innerHTML = "";
+  articles.forEach((article) => {
     if (!article.urlToImage) return; // Fixed the typo here
-      const cardClone = newsCardTemplate.content.cloneNode(true); // Fixed the variable name
-      fillDataIncard(cardClone, article);
+    const cardClone = newsCardTemplate.content.cloneNode(true); // Fixed the variable name
+    fillDataIncard(cardClone, article);
     cardContainer.appendChild(cardClone);
   });
 }
-
 
 function fillDataIncard(cardClone, article) {
   const date = new Date(article.publishedAt).toLocaleString("en-US", {
@@ -41,7 +40,7 @@ function fillDataIncard(cardClone, article) {
   // newsSource.innerHTML = `Published by: ${article.author || article.source.name}`;
 
   // for cliking a card
-  cardClone.firstElementChild.addEventListener('click', () => {
+  cardClone.firstElementChild.addEventListener("click", () => {
     window.open(article.url, "_blank");
   });
 }
@@ -50,22 +49,22 @@ let curSelectedNav = null;
 function onNavItemClick(id) {
   fetchNews(id);
   const navItem = document.getElementById(id);
-  
+
   // remove a lod nav item and give selected item nav
-  curSelectedNav?.classList.remove('active');
+  curSelectedNav?.classList.remove("active");
   curSelectedNav = navItem;
-  curSelectedNav.classList.add('active');
+  curSelectedNav.classList.add("active");
 }
 
 //for searching
-const searchButton = document.getElementById('search-button');
-const searchText = document.getElementById('search-text');
+const searchButton = document.getElementById("search-button");
+const searchText = document.getElementById("search-text");
 
-searchButton.addEventListener('click', () => {
+searchButton.addEventListener("click", () => {
   const query = searchText.value;
   if (!query) return;
   fetchNews(query);
-  curSelectedNav?.classList.remove('article');
+  curSelectedNav?.classList.remove("article");
   curSelectedNav = null;
 });
 
@@ -76,7 +75,9 @@ let currentPage = 1; // Current page, initialized to 1
 
 // Modify the fetchNews function to include pagination
 async function fetchNews(query, page = 1) {
-  const res = await fetch(`${url}${query}&apiKey=${API_KEY}&page=${page}&pageSize=${pageSize}`);
+  const res = await fetch(
+    `${url}${query}&apiKey=${API_KEY}&page=${page}&pageSize=${pageSize}`
+  );
   const data = await res.json();
   console.log(data);
   bindData(data.articles);
@@ -94,6 +95,3 @@ function prevPage() {
     fetchNews(curSelectedNav.id, currentPage);
   }
 }
-
-
-

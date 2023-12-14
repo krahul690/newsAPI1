@@ -154,3 +154,26 @@ margin-block: 12px;
 color: red;
 
 }
+
+/* Add this CSS in your style section or in a separate CSS file */
+.button1{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+    margin-right: 12px;
+text-align: center;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
