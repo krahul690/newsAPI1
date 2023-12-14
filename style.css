@@ -87,8 +87,8 @@ gap: 8px;
 width: 200px;
 height: 100%;
 padding-inline: 12px;
-border-radius: 4px;
-border: 2px solid #de3131;
+border-radius: 8px;
+border: 2px solid #b58888;
 font-family: nb;
 }
 
@@ -176,4 +176,5 @@ text-align: center;
 
 button:hover {
   background-color: #2980b9;
+    color: black;
 }
