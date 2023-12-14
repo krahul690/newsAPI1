@@ -1,0 +1,156 @@
+@font-face {
+    font-family: nb;
+    src: url(Assests/NBInternationalProBoo.ttf);
+}
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root{
+--primary-text-color:#183b56;
+--secondary-text-color:#183b56;
+--accent-color:#2294ed;
+--accent-color-dark:#1d69a3;
+}
+
+body{
+font-family: nb;
+color: var(--primary-text-color);
+}
+
+p{
+font-family: Georgia, 'Times New Roman', Times, serif;
+color: var(--secondary-text-color);
+line-height: 1.4rem;
+}
+
+a{
+text-decoration: none;
+}
+ul{
+list-style: none;
+}
+
+.flex{
+display: flex;
+align-items: center;
+}
+
+.container{
+max-width: 1180px;
+margin-inline: auto;
+overflow: hidden;
+}
+
+nav{
+
+background-color: #f3faff;
+box-shadow: 0 0 4px #bbd0e2;
+position: fixed;
+top: 0;
+z-index: 99;
+left: 0;
+right: 0;
+}
+
+.main-nav{
+justify-content: space-between;
+padding: 8px;
+}
+
+.LOGO img{
+width: 120px;
+}
+
+.nav-links ul{
+gap: 16px;
+}
+.hover-link{
+cursor: pointer;
+}
+.hover-link:hover{
+color: var(--secondary-text-color);
+}
+.hover-link:active{
+color: rgb(219, 158, 26);
+}
+
+.search-bar{
+height: 32px;
+gap: 8px;
+}
+
+.news-input{
+width: 200px;
+height: 100%;
+padding-inline: 12px;
+border-radius: 4px;
+border: 2px solid #de3131;
+font-family: nb;
+}
+
+.search-btn{
+background-color: var(--accent-color);
+color: white;
+padding: 8px 24px;
+border: none;
+border-radius: 4px;
+font-family: nb;
+}
+
+.search-btn:hover{
+color: var(--accent-color-dark);
+}
+
+/* main */
+main{
+padding-block: 20px;
+margin-top: 80px;
+}
+
+.card-container{
+justify-content: space-between;
+flex-wrap: wrap;
+row-gap: 20px;
+align-items: start;
+}
+
+.card{
+width: 350px;
+min-height: 400px;
+box-shadow: 0 0 4px #d4ecff;
+border-radius: 4px;
+cursor: pointer;
+background-color: #fff;
+/* overflow is used for  card img not go outside of box*/
+overflow: hidden;  
+transition: all 0.3s ease;
+}
+
+.card:hover{
+box-shadow: 1px 1px 8px #d4ecff;
+background-color: #f4ecec;
+transform: translateY(-2px);
+}
+
+.card-container img{
+width: 100%;
+height: 220px;
+object-fit: cover;
+}
+
+.card-content{
+padding: 12px;
+}
+.news-source{
+margin-block: 12px;
+}
+
+
+.nav-item.active{
+color: red;
+
+}
